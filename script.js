@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    const serviceCards = document.querySelectorAll('.service-card');
+    const serviceItems = document.querySelectorAll('.service-item');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
     const imageGridItems = document.querySelectorAll('.image-grid-item');
     
@@ -167,8 +167,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
     
-    if (serviceCards.length > 0) {
-        observeElements(serviceCards, 180);
+    if (serviceItems.length > 0) {
+        observeElements(serviceItems, 180);
     }
     
     if (portfolioItems.length > 0) {

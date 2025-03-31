@@ -61,7 +61,7 @@ function openVideoModal(videoId) {
     const originalPaddingRight = window.getComputedStyle(document.body).paddingRight;
     
     document.body.classList.add('modal-open');
-    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.top = `0px`;
     document.body.style.paddingRight = `${parseInt(originalPaddingRight || 0) + scrollbarWidth}px`;
     
     void document.body.offsetHeight;

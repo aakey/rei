@@ -53,17 +53,56 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contact-form');
     
     if (contactForm) {
+        // Initialize EmailJS with your public key
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+        })();
+        
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            alert('Thank you for your message! I will get back to you within 24 hours.');
+            const formMessage = document.querySelector('.form-message');
+            formMessage.textContent = "Sending message...";
+            formMessage.style.color = "#333";
             
-            contactForm.reset();
+            // Get the form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Prepare template parameters
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                subject: subject,
+                message: message,
+                to_email: "sibotaxis@hotmail.com"
+            };
+            
+            // Send the email using EmailJS
+            emailjs.send('default_service', 'template_id', templateParams) // Replace with your service ID and template ID
+                .then(function() {
+                    formMessage.textContent = "Message sent successfully!";
+                    formMessage.style.color = "green";
+                    contactForm.reset();
+                    setTimeout(() => {
+                        formMessage.textContent = "";
+                    }, 5000);
+                }, function(error) {
+                    formMessage.textContent = "Failed to send message. Please try again.";
+                    formMessage.style.color = "red";
+                    console.error('EmailJS error:', error);
+                });
         });
         
+        // Handle floating labels
         const formInputs = contactForm.querySelectorAll('input, textarea');
         
         formInputs.forEach(input => {
+            // Skip hidden inputs
+            if (input.type === 'hidden') return;
+            
             const formGroup = input.parentElement;
             const label = document.createElement('label');
             label.textContent = input.getAttribute('placeholder');

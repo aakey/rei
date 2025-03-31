@@ -315,15 +315,15 @@ header.scrolled .nav-links a {
     background-color: var(--secondary-color);
 }
 
-.motto h4 {
-    font-family: var(--font-main);
-    font-size: 2.2rem;
+.motto h2 {
+    font-size: 2rem;
     font-weight: 500;
-    max-width: 1000px;
-    margin: 0 auto;
     font-style: italic;
+    text-align: center;
     color: var(--primary-color);
     line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 /* Services Section */
@@ -347,9 +347,9 @@ header.scrolled .nav-links a {
 
 .service-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: calc(var(--spacing-unit) * 6);
-    margin-top: calc(var(--spacing-unit) * 8);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
 }
 
 .service-card {
@@ -406,10 +406,6 @@ header.scrolled .nav-links a {
     text-align: center;
     padding: calc(var(--spacing-unit) * 15) 0;
     position: relative;
-}
-
-.portfolio h2 {
-    margin-bottom: calc(var(--spacing-unit) * 10);
 }
 
 .portfolio-grid {
@@ -552,6 +548,7 @@ header.scrolled .nav-links a {
     background-position: center;
     position: relative;
     background-attachment: fixed;
+    text-align: center;
 }
 
 .contact::before {
@@ -651,11 +648,11 @@ footer {
     margin-bottom: calc(var(--spacing-unit) * 10);
 }
 
-.footer-section h5 {
-    font-size: 1.3rem;
-    margin-bottom: calc(var(--spacing-unit) * 4);
-    color: var(--highlight-color);
-    font-family: var(--font-main);
+.footer-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    color: var(--secondary-color);
+    position: relative;
 }
 
 .footer-section p {
@@ -1009,6 +1006,14 @@ body.modal-open {
     background-image: url('https://images.unsplash.com/photo-1605806616949-1e87b487fc2f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
 }
 
+.sports-bg {
+    background-image: url('https://images.unsplash.com/photo-1516762689617-e1cffcef479d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+}
+
+.fashion-bg {
+    background-image: url('https://images.unsplash.com/photo-1509631179647-0177331693ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+}
+
 /* About Section Text */
 .about-text {
     max-width: 1000px;
@@ -1208,7 +1213,9 @@ body.modal-open {
     font-style: italic;
 }
 
-/* Add styles for the sports background image */
-.sports-bg {
-    background-image: url('https://images.unsplash.com/photo-1516762689617-e1cffcef479d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+.form-message {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 500;
+    min-height: 24px;
 } 

@@ -1,4 +1,45 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle functionality
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinksContainer = document.querySelector('.nav-links');
+    const menuOverlay = document.querySelector('.mobile-menu-overlay');
+    
+    if (mobileMenuToggle && navLinksContainer) {
+        mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinksContainer.classList.toggle('active');
+            if (menuOverlay) menuOverlay.classList.toggle('active');
+            
+            // Prevent body scrolling when menu is open
+            if (navLinksContainer.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        const menuLinks = navLinksContainer.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                navLinksContainer.classList.remove('active');
+                if (menuOverlay) menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Close menu when clicking on overlay
+        if (menuOverlay) {
+            menuOverlay.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                navLinksContainer.classList.remove('active');
+                this.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+    }
+
     setupYouTubeVideo();
     
     const header = document.querySelector('header');

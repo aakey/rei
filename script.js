@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         // Initialize EmailJS with your public key
         (function() {
-            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+            emailjs.init("SpcFEBUa3q6z_DejJ"); // Replace with your actual public key from EmailJS dashboard
         })();
         
         contactForm.addEventListener('submit', function(e) {
@@ -107,9 +107,9 @@ document.addEventListener('DOMContentLoaded', function() {
             formMessage.style.color = "#333";
             
             // Get the form data
-            const name = document.getElementById('name').value;
+            const name = "Rey Media Website Visitor";
             const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
+            const subject = "Email from Rey Media site";
             const message = document.getElementById('message').value;
             
             // Prepare template parameters
@@ -122,17 +122,19 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             
             // Send the email using EmailJS
-            emailjs.send('default_service', 'template_id', templateParams) // Replace with your service ID and template ID
+            emailjs.send('service_ic8u1rb', 'template_vr24x9t', templateParams) // Replace with your actual service ID and template ID
                 .then(function() {
                     formMessage.textContent = "Message sent successfully!";
                     formMessage.style.color = "green";
                     contactForm.reset();
+                    showToast('Message sent successfully!', 5000, 'success');
                     setTimeout(() => {
                         formMessage.textContent = "";
                     }, 5000);
                 }, function(error) {
                     formMessage.textContent = "Failed to send message. Please try again.";
                     formMessage.style.color = "red";
+                    showToast('Failed to send message. Please try again.', 5000, 'error');
                     console.error('EmailJS error:', error);
                 });
         });
@@ -311,4 +313,34 @@ function setupYouTubeVideo() {
             videoBackground.classList.add('loaded');
         }
     }, 3000);
+}
+
+// Toast notification function
+function showToast(message, duration = 3000, type = 'default') {
+    // Remove any existing toast
+    const existingToast = document.querySelector('.toast-notification');
+    if (existingToast) {
+        existingToast.remove();
+    }
+    
+    // Create toast element
+    const toast = document.createElement('div');
+    toast.className = `toast-notification toast-${type}`;
+    toast.textContent = message;
+    
+    // Add to body
+    document.body.appendChild(toast);
+    
+    // Show the toast
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10);
+    
+    // Hide and remove after duration
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+    }, duration);
 } 
